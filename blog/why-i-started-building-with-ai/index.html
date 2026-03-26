@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Behind twomore: what the napkin math doesn't show you — Joel Seetoh</title>
+  <meta name="description" content="The two-lines-on-a-napkin thesis is seductive because it's not wrong in the abstract. The problem isn't the observation. It's the catastrophic underestimation of why the expensive and slow industry is expensive and slow in the first place.">
+  <meta property="og:title" content="Behind twomore: what the napkin math doesn't show you">
+  <meta property="og:description" content="The two-lines-on-a-napkin thesis is seductive because it's not wrong in the abstract.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://joelseetoh.com/blog/why-i-started-building-with-ai/">
+  <meta property="og:site_name" content="Joel Seetoh">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <!-- PostHog -->
+  <script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    posthog.init('phc_DruQY4Qgqo0eXSVyumRodYPZxE56rvlq6wdhV7PceyD', {
+      api_host: 'https://us.i.posthog.com',
+      person_profiles: 'identified_only',
+    })
+  </script>
+</head>
+<body>
+
+  <article>
+
+    <header>
+      <h1><a href="/" class="home-link">Joel Seetoh</a></h1>
+    </header>
+
+    <a href="/" class="back-link">← Home</a>
+
+    <div class="post-header">
+      <h2 class="post-title">Behind twomore: what the napkin math doesn't show you</h2>
+      <span class="post-date">Mar 2026</span>
+    </div>
+
+    <div class="post-body">
+
+      <p>There's a peculiar species of delusion unique to founders building in AI. It goes something like this: you see a massive industry doing something expensive and slow. You see a new technology doing something cheap and fast. You draw the obvious line between the two points and convince yourself you've discovered arbitrage.</p>
+
+      <p>What you've actually discovered is the setup for a punchline the market is about to deliver at your expense.</p>
+
+      <p>This pattern is everywhere right now. Delve, a YC-backed compliance startup, raised $32 million at a $300 million valuation to automate SOC 2 and HIPAA certifications with "agentic AI." Compliance in days instead of months. By January 2026, over 1,000 customers. By March, a whistleblower investigation emerged alleging that Delve had been generating near-identical audit reports across hundreds of clients, with pre-written conclusions no auditor had reviewed. The accusation: they hadn't automated compliance. They'd automated the appearance of it. Insight Partners quietly scrubbed their investment thesis from the internet.</p>
+
+      <p>The two-lines-on-a-napkin thesis is seductive because it's not wrong in the abstract. Compliance really is expensive. Fashion photography really is inefficient. The problem isn't the observation. It's the catastrophic underestimation of why the "expensive and slow" industry is expensive and slow in the first place. Usually: because the details are brutally hard, and the details are the product.</p>
+
+      <h3>The thesis that wrote itself</h3>
+
+      <p>I built twomore because the thesis was, on paper, bulletproof.</p>
+
+      <p>AI-generated images had quietly crossed the threshold from "impressive tech demo" to "indistinguishable from reality if you don't zoom in too hard." The melting faces and seven-fingered hands of 2023 had given way to images you'd scroll past on Instagram without a second thought.</p>
+
+      <p>Fashion, meanwhile, remained stubbornly analogue in its content creation. Brands were still booking studios, hiring photographers, coordinating models, and spending five figures on shoots that produced a handful of usable images. The inefficiency was almost offensive.</p>
+
+      <p>Zara had already started experimenting with AI campaigns. H&M was creating digital twins of thirty real models, licensing their likenesses to generate marketing content without requiring anyone to actually stand in front of a camera.</p>
+
+      <p>The writing wasn't just on the wall. It was on the wall, the ceiling, and the floor, in neon.</p>
+
+      <p>The generation models were improving at a pace that made planning six months ahead feel like an act of faith. With the right tools and careful prompting, you could produce results that genuinely narrowed the gap between synthetic and real.</p>
+
+      <p>Not perfectly, not yet, but enough to make you believe the remaining distance was just engineering.</p>
+
+      <figure class="post-image">
+        <img src="/images/model-female.jpg" alt="AI-generated female model — realistic close-up and outfit shots">
+        <figcaption>Output from twomore. Close enough to scroll past on Instagram without a second thought.</figcaption>
+      </figure>
+
+      <h3>The dopamine of building</h3>
+
+      <p>I should mention that I'm not an engineer by training. I started in design. The kind where you're sketching layouts and obsessing over typography, not writing functions. Marketing came next, because it turns out that making beautiful things nobody sees is a hobby, not a career. I needed to get my work in front of people, so I learned how to promote it. And promoting it meant building websites, which meant learning to code, which meant I'd gone from picking fonts to picking frameworks in the span of a few years without ever consciously deciding to become technical.</p>
+
+      <p>When I first taught myself to code, the process looked like what it looked like for everyone who came up that way: hours on Stack Overflow hunting for the one answer that matched your exact error message, YouTube tutorials you'd watch three times before the concept stuck, weeks of practice before you could apply anything to a real project. You'd spend an entire afternoon debugging a CSS layout issue that turned out to be a missing semicolon. That was the tax you paid for building things without a computer science degree, and you paid it gladly because the alternative was not building at all.</p>
+
+      <p>Then, almost overnight, the tax disappeared.</p>
+
+      <p>Picture this: multiple terminals running simultaneously, each one autonomously constructing different features, AI agents orchestrating the work like some silicon symphony conductor. You'd sit back with your coffee and watch your product assemble itself across six screens. Problems that would have cost me a full day on Stack Overflow were solved in seconds. Features that would have taken weeks of self-study to even attempt were shipping before lunch. It was the closest thing I've experienced to a cheat code for building software.</p>
+
+      <figure class="post-image">
+        <img src="/images/build-terminals.jpg" alt="Multiple screens running simultaneously — twomore UI, Claude, Figma, code terminals">
+        <figcaption>Multiple things running at once: agents building features, a localhost preview, Figma for the layout, a business plan, raw notes, a background task reviewing images as they came back from the model. Everything was moving. The question it couldn't answer was whether any of it should.</figcaption>
+      </figure>
+
+      <p>Claude Code, which had started its life as a fragmented multi-terminal affair requiring separate windows for planning, building, and testing, had evolved into a single monolithic beast that could hold a million tokens of context and execute the full development cycle without blinking. The infrastructure for building AI products was improving almost as fast as the AI products themselves.</p>
+
+      <p>The opportunity seemed irrefutable: massive market, improving technology, incumbents asleep at the wheel, and tools that let you build at superhuman speed.</p>
+
+      <p>What could possibly go wrong?</p>
+
+      <h3>The devil in the drape</h3>
+
+      <p>The competitors in this space are all doing roughly the same thing. Upload a garment, select an AI model, receive a photo. For about 80% of use cases, the output is perfectly acceptable. Not extraordinary, not embarrassing, just competent. The e-commerce equivalent of a firm handshake.</p>
+
+      <p>The problem is the remaining 20%. And that's where every dollar of actual differentiation lives, and where AI goes to die.</p>
+
+      <p>A single fashion photograph is a staggeringly complex object when you bother to deconstruct it. That complexity is precisely what makes traditional photography expensive, and precisely what AI cannot yet replicate.</p>
+
+      <p>There's the model. The mood: lighting, makeup, the overall atmosphere that whispers "luxury" or screams "streetwear." The location, even when the location is just a different shade of white wall.</p>
+
+      <p>The pose: standing, sitting, turning, the particular angle of a hip that separates editorial from catalogue.</p>
+
+      <p>Then the outfit itself. A top alone fractures into fitted tees, wrap blouses, off-shoulder cuts, each with its own drape and fit requirements. Then bottoms, outerwear, accessories, and within each, a labyrinth of details that matter to anyone who actually sells clothes for a living. Is the shirt tucked? Half-tucked? Is the inner layer visible? What's the drape? How do the proportions shift when you swap a midi skirt for wide-leg trousers?</p>
+
+      <figure class="post-image">
+        <img src="/images/competitor-grid.png" alt="Grid of AI-generated fashion model photos from competitors">
+        <figcaption>What the market settled on. Diverse models, multiple angles, generated at scale. Competent. Something slightly off if you look long enough.</figcaption>
+      </figure>
+
+      <p>This also conveniently excludes outdoor settings, which introduce so many additional variables they might as well exist in a parallel dimension.</p>
+
+      <figure class="post-image">
+        <img src="/images/outdoor-warping.jpg" alt="AI-generated outdoor fashion photo showing warping and unnatural elements">
+        <figcaption>Four layers of clothing. A Manhattan intersection. Natural light. The model handled each separately. Together, it started inventing. Something in the collar. Something in the hand.</figcaption>
+      </figure>
+
+      <p>You'll find no shortage of content creators on social media demonstrating how trivially easy it is to generate fashion imagery with tools like Gemini. They're performing a very specific magic trick.</p>
+
+      <p>What they're showing you is either a loose concept where the AI fills in whatever approximation it fancies and nobody examines the output too closely, or a reproduction of an existing reference image where the model essentially performs a sophisticated copy-paste with a face swap. And if you look a little closer, most of these creators aren't actually building products. They're selling courses, teaching other people how to draw the same obvious line between "expensive" and "AI" and convincing them there's gold at the intersection.</p>
+
+      <p>Matthew Drinkwater, who runs innovation at the London College of Fashion, said something that stuck with me: AI won't replace designers, but it will elevate what they can do. And he's right, as far as it goes. The technology is exceptional at speed, at iteration, at producing variations. But fashion photography isn't a variation problem. It's a vision problem. A stylist knows why a particular belt transforms an outfit. A photographer understands that the difference between a good shot and a great one is three degrees of chin angle and the shadow it casts on a collarbone.</p>
+
+      <figure class="post-image">
+        <img src="/images/mood-grid.jpg" alt="Same AI model across eight different moods, settings, and styles">
+        <figcaption>Eight settings, one model. Each required careful, specific prompting. The technology could produce this. Just not automatically.</figcaption>
+      </figure>
+
+      <figure class="post-image">
+        <div class="image-pair">
+          <img src="/images/model-moods-ui.png" alt="twomore model selection interface">
+          <img src="/images/model-variations.jpg" alt="AI model output variations in same outfit, different shots">
+        </div>
+        <figcaption>The selector and the output. Picking the model was easy. Getting the mood right was a different problem entirely: editorial cool versus commercial clean versus streetwear energy.</figcaption>
+      </figure>
+
+      <p>And there's a catch. Researchers at UC Berkeley found that when humans use AI as a creative partner, idea diversity collapses. Both humans and AI gravitate toward the statistically "likely" answer, and everyone ends up in the same neighbourhood. The human hand, the imperfect and sometimes irrational choices of a creative director, is what keeps fashion content from feeling like it rolled off an assembly line.</p>
+
+      <h3>The trilemma of who pays</h3>
+
+      <p>The cruelest discovery was not technical but commercial, and it took the form of a trilemma so clean it humbled every assumption I'd carried in from the outside.</p>
+
+      <p>On the left of the spectrum sit the brands who genuinely do not care. They pull images from their suppliers or snap something on an iPhone and list it. The product is the product. Visual polish is overhead, and overhead is the enemy.</p>
+
+      <p>These people are not your customers. They would not be your customers if you gave the product away for free, because the act of using it implies a belief they don't hold: that presentation matters.</p>
+
+      <p>On the right sit the premium brands, the ones with ongoing relationships with real models who appear in their photoshoots, their live videos, their Instagram stories, their TikToks. They've amortised the cost of physical production across enough channels that AI doesn't save them money.</p>
+
+      <p>It costs them something far more valuable: authenticity. A brand caught using AI-generated models risks the kind of consumer backlash that turns a cost-saving exercise into a reputation crisis. Levi's floated the idea of AI-generated models for diversity and had to quietly shelve the plan. H&M's digital twin initiative drew mixed reactions, with the first model to see her AI replica describing the experience as both "exciting and unsettling."</p>
+
+      <p>And in the middle? The curious ones, the experimenters, the brands open to AI and willing to try new tools? They exist, certainly. But they also have access to Gemini, to ChatGPT, to every general-purpose AI model that offers image generation as one feature among dozens.</p>
+
+      <p>Why pay for a specialised fashion photography tool when twenty dollars a month buys you a Swiss Army knife that also writes your ad copy and answers your customer service emails?</p>
+
+      <p>The brands that need the most help with content are either philosophically opposed to paying for it, commercially immune to your value proposition, or already served by tools that cost less and do more.</p>
+
+      <p>This, for those keeping score, is what business school professors call a "challenging market dynamic" and what founders call "oh no."</p>
+
+      <h3>When the platform swallows the feature</h3>
+
+      <p>If the brand spectrum wasn't sobering enough, the platform dynamics made it worse.</p>
+
+      <p>Google's Doppl app is shutting down on April 30, 2026, less than ten months after launch. Doppl was a consumer fashion experiment: upload a photo of yourself, feed it images of any outfit, and the AI generates a realistic image of you wearing those clothes. TIME Magazine called it one of the Best Inventions of 2025.</p>
+
+      <p>Twomore and Doppl solve different problems. Doppl was a consumer vanity mirror. twomore is a B2B photography studio.</p>
+
+      <p>But the autopsy reveals the same cause of death: platformisation. Google didn't shut Doppl down because the technology failed. They shut it down because the technology worked well enough to fold into Google Shopping and image search results. Why maintain a standalone app when the same capability can be a feature inside something a billion people already use?</p>
+
+      <p>Here's where it gets properly uncomfortable for anyone building in this space.</p>
+
+      <p>Just weeks before announcing Doppl's shutdown, Google launched Photoshoot inside Pomelli, their free AI marketing tool for small businesses. Pomelli analyses your brand's website, extracts your visual identity, and generates on-brand marketing assets. Photoshoot, specifically, takes a product image and produces studio-quality photography using Google's Nano Banana model. It works for jewelry, for coffee, for yoga studios. It works for fashion.</p>
+
+      <p>And it costs nothing.</p>
+
+      <p>Now, Google may eventually charge for this. They usually do. But it'll be bundled into a broader ecosystem the same way Google Workspace bundles Docs, Sheets, and Drive into a single subscription. The brands in the middle of the spectrum will pay for a suite that handles everything from marketing assets to product photography. Not because any individual feature is best-in-class, but because the bundle is convenient and the price is right.</p>
+
+      <figure class="post-image">
+        <img src="/images/pomelli.png" alt="Google Pomelli — free AI marketing tool for small businesses">
+        <figcaption>Google's Pomelli. Free. Analyses your brand, generates your content, includes product photography. Ships with everything else Google gives small businesses.</figcaption>
+      </figure>
+
+      <p>That's the competitive landscape for a vertical AI fashion tool: you're not competing against other startups. You're competing against a rounding error in Google's feature set.</p>
+
+      <h3>Building on borrowed ground</h3>
+
+      <p>When your entire product sits on top of frontier models you don't own, you're essentially a tenant farmer. You work the land, you plant the seeds, you pray for good weather. But the landlord can raise the rent, flood the field, or sell the property to a developer whenever the mood strikes.</p>
+
+      <p>In practical terms, this means rate limits that throttle your users during peak hours. Downtime that's entirely outside your control. Cost structures that shift without warning. Quality degradation when the service is under heavy load.</p>
+
+      <p>Every one of these hits the user experience directly, and not one of them can be engineered around. You can build the most elegant workflow, the most intuitive interface, the most fashion-savvy prompt architecture in the world, and it all falls apart when the model provider has a bad Tuesday.</p>
+
+      <p>Shouldn't I have known this from the start? I did. Every founder building on top of frontier models knows the moat is thin. But the two-lines-on-a-napkin thesis has a way of overriding your better judgment. You tell yourself that focusing on a specific niche, understanding the domain deeply, building the workflow that general-purpose tools can't match, these things will create enough distance. And the dopamine of building, watching those terminals hum, seeing features materialise faster than you've ever shipped anything in your life, that makes the risk feel manageable.</p>
+
+      <p>The skills are real. Building with AI agents, designing prompt architectures, orchestrating complex workflows, none of that disappears when the product thesis doesn't hold. But six terminals running simultaneously is impressive in the same way a treadmill is impressive: a lot of motion, not necessarily a lot of distance. The question is whether you're building fast or building the right thing, and the speed itself makes it very hard to tell the difference.</p>
+
+      <p>There's a story that Hamilton Mann shared about a company that rolled out GenAI across 2,800 employees. On paper, it was a success. More output, faster turnaround, dashboards lighting up green. But when you looked closer, the quarterly reviews had gotten prettier without getting smarter. Beautiful slides, thin judgment. The skills that actually mattered, asking the hard questions, reframing problems, connecting dots across teams, those quietly atrophied. People stopped leading and started curating. The tool set the pace and humans followed.</p>
+
+      <p>I recognise that pattern more than I'd like to admit. The idea was always to build fast, get something into users' hands, and let their behaviour tell us what to double down on. Ship, learn, iterate. But the speed of building created its own gravity. When features materialise before lunch, the temptation is to keep shipping rather than pause and ask the uncomfortable question: does any of this actually solve a problem someone will pay for?</p>
+
+      <p>And here's the thing that kept surfacing no matter how fast we shipped: regardless of whether you use a real model or an AI-generated one, the photoshoot itself is still fundamentally a creative act. The model is one variable. The lighting, the styling, the mood, the composition, the storytelling through clothing — those are the variables that make the image work. Unless you solve those dimensions consistently, the model is just one piece of a puzzle with too many missing parts.</p>
+
+      <p>No amount of shipping speed changes that.</p>
+
+      <h3>The convergence</h3>
+
+      <p>The market is converging, and it's converging toward mediocrity. That sounds harsh, but I mean it precisely: the future belongs to models that are good enough at everything, not perfect at anything.</p>
+
+      <p>Google's Gemini already handles fashion imagery alongside everything from code generation to document analysis. Most users, faced with the choice between a $20/month tool that handles all of the above and a $50/month tool that handles fashion photography slightly better, will choose the Swiss Army knife every time.</p>
+
+      <p>Not because they don't appreciate quality, but because the marginal improvement doesn't justify the marginal cost.</p>
+
+      <p>Is there room for specialised AI fashion products? Possibly. But the window is the width of a belt buckle and closing fast. You need to be meaningfully, demonstrably, can't-ignore-it better than the general-purpose alternative, for a customer segment large enough to sustain a business and willing enough to pay for the difference.</p>
+
+      <p>But here's a contrarian thought worth sitting with: in a world where mediocre companies are all using the same AI tools to generate the same competent-but-forgettable content, perhaps authenticity becomes the ultimate differentiator.</p>
+
+      <p>Think about what happened to email. Inboxes are now flooded with AI-generated sales outreach, personalised at scale but personal to nobody. The response? The most effective salespeople have gone back to face-to-face meetings, handwritten notes, in-person events. The human touch became the signal precisely because everything else became noise.</p>
+
+      <p>Fashion may follow the same arc. When every mid-tier brand is using AI to produce identical-looking product photography, the brands that invest in real shoots, real stylists, real creative direction will stand out not despite the expense but because of it. The imperfection becomes the proof of authenticity. The cost becomes the moat.</p>
+
+      <p>WGSN's trend forecasters are already seeing this play out on the runways. Prada showed intentional abrasions in their Fall 2026 collection. Ashlyn showcased raw-edge tailoring with visible topstitching. WGSN calls it the "anti-AI aesthetic": designers deliberately revealing the human hand behind their work. In a market flooded with sameness, visible creativity and genuine cultural exchange are becoming fashion's most powerful currency.</p>
+
+      <h3>What the market taught me</h3>
+
+      <p>Building twomore taught me something that I suspect every founder in the AI application layer will eventually learn: the opportunity was real, the market signals were genuine, the technology was impressive, and none of that was sufficient.</p>
+
+      <p>The gap between "this should work" and "this does work, for enough people, sustainably" is not a gap you can close with better engineering. It's a gap that exists in the market itself, in the messy, irrational, deeply human decisions that brands make about how they want to present themselves to the world.</p>
+
+      <p>But the experience is far from wasted. The ability to build and ship with AI agents, to orchestrate complex systems, to move from idea to working product in days instead of months, that skill is genuinely valuable and will only become more so. What I've learned to be more honest about is where that speed creates real value and where it creates the illusion of progress.</p>
+
+      <p>There's an old line from Robert Solow that keeps aging well: "You can see the computer age everywhere but in the productivity statistics." Swap "computer" for "AI" and you have 2026. Despite hundreds of S&P 500 companies claiming positive AI adoption, 90% of managers in a recent survey reported no measurable impact on productivity. The tools are real. The speed is real. But speed without direction is just expensive motion.</p>
+
+      <p>What I've taken from this is not that the tools are the problem. It's that six terminals running simultaneously is not a substitute for sitting quietly with a notebook and thinking hard about whether your customers actually want what you're building. The first is satisfying. The second is productive. Learning to tell the difference might be the most important skill a founder can develop right now.</p>
+
+      <p>I'm still building. The instinct that pulled me toward twomore, seeing a gap and wanting to close it, that hasn't changed. What's changed is how I evaluate which gaps are worth closing, and how honest I am with myself about the distance between a compelling thesis and a viable business.</p>
+
+      <p>The napkin math will always look good. The question is what you find when you flip the napkin over.</p>
+
+    </div>
+
+  </article>
+
+</body>
+</html>
